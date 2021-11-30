@@ -28,7 +28,7 @@ namespace UndergroundConnectionsClient.Models
 
     public static Artist GetDetails(int id)
     {
-      var apiCallTask = ApiHelper.Get(id);
+      var apiCallTask = ApiHelperArtist.Get(id);
       var result = apiCallTask.Result;
 
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
@@ -39,18 +39,18 @@ namespace UndergroundConnectionsClient.Models
     public static void Post(Artist artist)
     {
       string jsonArtist = JsonConvert.SerializeObject(artist);
-      var apiCallTask = ApiHelper.Post(jsonArtist);
+      var apiCallTask = ApiHelperArtist.Post(jsonArtist);
     }
 
     public static void Put(Artist artist)
     {
       string jsonArtist = JsonConvert.SerializeObject(artist);
-      var apiCallTask = ApiHelper.Put(artist.ArtistId, jsonArtist);
+      var apiCallTask = ApiHelperArtist.Put(artist.ArtistId, jsonArtist);
     }
 
     public static void Delete(int id)
     {
-      var apiCallTask = ApiHelper.Delete(id);
+      var apiCallTask = ApiHelperArtist.Delete(id);
     }
   }
 }

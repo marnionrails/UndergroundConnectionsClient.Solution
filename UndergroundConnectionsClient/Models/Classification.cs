@@ -3,7 +3,7 @@ using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CretaceousClient.Models
+namespace UndergroundConnectionsClient.Models
 {
   public class Classification
   {
