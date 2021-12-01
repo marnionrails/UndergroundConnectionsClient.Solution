@@ -21,5 +21,33 @@ namespace UndergroundConnectionsClient.Models
 
       return classificationList;
     }
+
+    public static Classification GetDetails(int id)
+    {
+      var apiCallTask = ApiHelperClassification.Get(id);
+      var result = apiCallTask.Result;
+
+      JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+      Classification classification = JsonConvert.DeserializeObject<Classification>(jsonResponse.ToString());
+
+      return classification;
+    }
+
+    public static void Post(Classification classification)
+    {
+      string jsonClassification = JsonConvert.SerializeObject(classification);
+      var apiCallTask = ApiHelperClassification.Post(jsonClassification);
+    }
+
+    public static void Put(Classification classification)
+    {
+      string jsonClassification = JsonConvert.SerializeObject(classification);
+      var apiCallTask = ApiHelperClassification.Put(classification.ClassificationId, jsonClassification);
+    }
+
+    public static void Delete(int id)
+    {
+      var apiCallTask = ApiHelperClassification.Delete(id);
+    }
   }
 }
