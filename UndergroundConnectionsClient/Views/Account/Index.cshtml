@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+@using System.Security.Claims
+<h2>Undergrond Connections: Artists</h2>
+
+@if(User.Identity.IsAuthenticated)
+{
+  <p>You are logged in as @User.Identity.Name.</p>
+
+  <ul>
+  <li>@Html.ActionLink("Manage artists","Index","Artists")</li>
+  <li>@Html.ActionLink("Manage classifications","Index","Classifications")</li>
+  </ul>
+  
+  @using (Html.BeginForm("LogOff", "Account"))
+  {
+    <input type="submit" class="btn btn-default" value="Log out" />
+  }
+
+}
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<p>@Html.ActionLink("Login", "Login")</p>
+<p>@Html.ActionLink("Register", "Register")</p>
