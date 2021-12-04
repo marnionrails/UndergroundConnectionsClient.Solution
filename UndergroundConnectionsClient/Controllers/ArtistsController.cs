@@ -21,7 +21,8 @@ namespace UndergroundConnectionsClient.Controllers
     public IActionResult Index(Artist artist)
     {
       Artist.Post(artist);
-      return RedirectToAction("Index");
+      var artistId = artist.ArtistId;
+      return RedirectToAction("Details", new {id = artistId});
     }
 
     public IActionResult Details(int id)
